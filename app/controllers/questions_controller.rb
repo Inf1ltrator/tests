@@ -16,8 +16,8 @@ class QuestionsController < ApplicationController
 
 	def create
 		@question = @blank.questions.new(question_params)
-		@task.save
-		redirect_to @system
+		@question.save
+		redirect_to testing_form_blank_path(@blank)
 	end
 
 	def edit
@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
     	@blank = Blank.find(params[:blank_id])
   	end
 
-  	def qestion_params
+  	def question_params
 		params.require(:question).permit(:name, :description, :answer1, :answer2)
 	end
 

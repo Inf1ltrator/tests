@@ -3,5 +3,9 @@
 	<p><%= f.input :name, label: false %></p>
 	<p><h4>Описание</h4><p>
 	<p><%= f.input :description, as: :text, label: false %></p>
+	<p><h4>Ответ №1</h4><p>
+	<p><%= f.input :answer1, label: false %></p>
+	<p><h4>Ответ №2</h4><p>
+	<p><%= f.input :answer2, label: false %></p>
 	<p><%= f.button :submit, 'Создать', html: { class: 'btn btn-default' } %>  </p>
 </div>

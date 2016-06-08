@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default">
+  <a class="navbar-brand" href="/">Психотест</a>
+  <ul class="nav navbar-nav"> 
+      <li role="presentation"><%=link_to 'Главная', root_path %></li>
+      <%if user_signed_in? %>
+        <li role="presentation"><%=link_to 'Профиль', user_path(current_user) %></li>
+        <li role="presentation"><%=link_to 'Пользователи', users_path %></li>
+        <li role="presentation"><%=link_to 'Тесты', blanks_path %></li>
+      <%end %>
+  </ul>
+  <%if !user_signed_in? %>
+    <ul class="nav navbar-nav navbar-right">
+      <li role="presentation"><%=link_to 'Вход',new_user_session_path %></li>
+      <li role="presentation"><%=link_to 'Регистрация',new_user_registration_path %></li>
+    </ul>
+  <%else %>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%=link_to "Выйти"+"("+current_user.email+")", destroy_user_session_path, :method => :delete %>
+      </li>
+    </ul>
+  <%end %>
+</nav>

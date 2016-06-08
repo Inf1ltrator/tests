@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160608074241) do
     t.integer  "blank_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "asnwer1"
+    t.string   "answer1"
     t.string   "answer2"
   end
 

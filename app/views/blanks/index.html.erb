@@ -1,0 +1,14 @@
+<div class="col-md-6" style=" float: none; margin: 0 auto;">
+	<ul class="list-group">
+	<% @blanks.each do |b| %>
+		<li class="list-group-item">
+		    <%= b.name %>
+		    <div class="btn-group btn-group-justified" role="group">
+				<div class="btn-group" role="group">
+					<%= link_to "Пройти", testing_form_blank_path(b), :class => "btn btn-default" %>
+				</div>
+			</div>
+		</li>
+	<%end %>
+	</ul>
+</div>

@@ -4,7 +4,11 @@ class BlanksController < ApplicationController
 	#Фильтр для загрузки пользователя 
 	before_filter :load_user
 	#Фильтр для загрузки бланка по id
-	before_filter :set_blank, only:[:show, :destroy, :edit, :update, :create]
+	before_filter :set_blank, only:[:testing_form, :show, :destroy, :edit, :update, :create]
+
+	def index
+	  @blanks = Blank.all
+	end
 
 	def show
 	  @questions = @blank.questions
@@ -35,11 +39,21 @@ class BlanksController < ApplicationController
 	end
 
 	def testing_form
+	  @questions = @blank.questions
 	end
 
 	def testing_complite
-	end
 
+		@answers[] = params[:answers]
+
+		if @answers != nil
+			@answers.each do |ans|
+			end
+		end
+
+		redirect_to @user
+
+	end
 
 	private
 

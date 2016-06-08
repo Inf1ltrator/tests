@@ -9,14 +9,8 @@
 	  				</div>
 	  				<div class="panel-body">
 		    			<%= s.description%>
-		    			<ul class="list-group">
-					    	<h5>Участники:</h5>
-					    	<li class="list-group-item" style="margin-top: 1em;">
-						    	<%s.users.each do |u|%>
-						    		<%=link_to u.email, user_path(u), :class => "list-group-item" %>
-						    	<%end %>
-						  	</li>
-						    <%= link_to "Подробнее", blank_path(s), :class => "btn btn-info", :style => "margin-top: 1em;" , method: :get %>
+		    			</br>
+						<%= link_to "Подробнее", blank_path(s), :class => "btn btn-info", :style => "margin-top: 1em;" , method: :get %>
 	  				</div>
 				</div>
 			<% end %>
