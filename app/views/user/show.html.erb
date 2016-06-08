@@ -1,0 +1,32 @@
+<div style="text-align: center">
+	<h1><%= @user.email %></h1>
+	<div class="col-md-6" style=" float: none; margin: 0 auto;">
+	<% if @user.systems.count > 0 %>
+		<h4 style="margin-top: 1em; text-align: left">Системы:</h4>
+		<ul class="list-group">
+			<% @blank.each do |i| %>
+			  	<%if user_signed_in? && (i.uid == current_user.id) %>
+			  		<div class="list-group-item list-group-item-info">
+					    <%= link_to i.name, blank_path(i), :class => "list-group-item", method: :get %>
+				    </div>
+				<% else %>
+					<%if i.users.include?(current_user) %>
+						<div class="list-group-item list-group-item-warning">
+							<%= link_to i.name, blank_path(i), :class => "list-group-item", method: :get %>
+						</div>
+					<%else %>
+						<div class="list-group-item list-group-item-danger">
+							<%= link_to i.name, blank_path(i), :class => "list-group-item", method: :get %>
+						</div>
+					<%end %>
+				<% end %>	
+			<% end %>
+		</ul>
+	<% else %>
+		<h4>Нет тестов</h4>
+	<% end %>
+	<%if @user == current_user %>
+		<%= link_to "Создать тест", new_blank_path, :class => "btn btn-success", method: :get %>
+	<% end %>
+	</div>
+</div>

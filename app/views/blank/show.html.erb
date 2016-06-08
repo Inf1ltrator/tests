@@ -1,0 +1,57 @@
+<div class="col-md-6" style="align-right;">
+	<div class="well" style="background-color: blue">
+		<ul class="list-group">
+			<h4>Пользователь:</h4>
+			<li class="list-group-item" style="margin-top: 1em;"><%= User.find_by_id(@blank.uid).email %></li>
+			<h4 style="margin-top: 1em;">Название:</h4>
+			<li class="list-group-item" style="margin-top: 1em;"><%= @blank.name %></li>
+			<h4 style="margin-top: 1em;">Описание:</h4>
+			<li class="list-group-item" style="margin-top: 1em;"><%= @blank.description %></li>
+		</ul>
+		<%if user_signed_in? && current_user.id == @blank.uid %>
+			<div class="btn-group btn-group-justified" role="group" aria-label="..." style="margin-top: 1em;">
+				<%=link_to "Редактировать тест", edit_system_path(@blank), :class => "btn btn-warning" %>
+			
+				<%=link_to "Удалить тест", system_path(@blank), :class => "btn btn-danger", method: :delete, data: {confirm: "Точно удалить?"} %>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="col-md-6" style="align-left;">
+	<div class="well" style="background-color: white">
+		<h4>Участники:</h4>
+		<ul class="list-group">
+		<%if @users.count > 0 %>
+			<% @users.each do |user| %>
+			   <%=link_to user.email, user_path(user), :class => "list-group-item" %>
+			   <%if user_signed_in? && current_user.id != @blank.uid && current_user.id == user.id %>
+			   		<%= link_to "Покинуть", leave_blank_path, :class => "list-group-item list-group-item-danger", :style => "text-align: center;", method: :delete, data: {confirm: "Точно покинуть?"} %>
+			   <% end %>
+			<% end %>  
+		<%else %>
+			<h4>Участников нет</h4>
+		<%end %>
+		<%if user_signed_in? && current_user.id != @blank.uid && !@users.include?(current_user) %>
+					<%= link_to "Присоеденится", add_blank_path, :class => "btn btn-success", :style => "margin-top: 1em;", method: :post %>
+		<% end %>
+	</div>	
+</div>
+
+<div class="col-md-6" style="align-left;">
+	<div class="well" style="background-color: white">
+		<h4>Участники:</h4>
+		<ul class="list-group">
+			<%if @blank.questions.count > 0 %>
+				<% @blank.questions.each do |task| %>
+				   <%=link_to question.name, blank_question_path(@blank,question), :class => "list-group-item" %>
+				<%end %>  
+			<%else %>
+				<h4>Вопросов нет</h4>
+			<%end %>
+		</ul>
+		<%if user_signed_in? && current_user.id == @blank.uid %>
+			<%= link_to "Добавить вопрос", new_blank_question_path(@blank), :class => "btn btn-success", :style => "margin-top: 1em;", method: :get %>
+		<%end %>
+	</div>
+</div>
