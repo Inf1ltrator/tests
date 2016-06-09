@@ -1,0 +1,25 @@
+<div class="col-md-6" style="align-right;">
+	<div class="well" >
+		<ul class="list-group">
+			<h4 style="margin-top: 1em;">Название:</h4>
+			<li class="list-group-item" style="margin-top: 1em;"><%= @answer_list.name %></li>
+			<h4 style="margin-top: 1em;">Описание:</h4>
+			<li class="list-group-item" style="margin-top: 1em;"><%= @answer_list.description %></li>
+			<h4 style="margin-top: 1em;">Результат:</h4>
+			<li class="list-group-item" style="margin-top: 1em;"><%= @answer_list.score %></li>
+		</ul>
+	</div>
+</div>
+
+<div class="col-md-6" style="align-left;">
+	<div class="well" >
+		<h4 style="margin-top: 1em;">Ответы:</h4>
+		<%if @answers.count > 0 %>
+			<%@answers.each do |a| %>
+				<p><%= a.answer -%></p>
+			<%end %>
+		<%else %>
+			Ответов нет
+		<%end %>		
+	</div>
+</div>

@@ -1,3 +1,15 @@
-<div style="text-align: center">
-	<h1><%= @user.email %></h1>
+<div class="col-md-6" style=" float: none; margin: 0 auto;">
+	<div style="text-align: center">
+		<h1><%= @user.email %></h1>
+		<h4>Пройденные тесты: </h4>
+		<ul class="list-group">
+			<%if @answer_lists.count > 0 %>
+				<%@answer_lists.each do |a|%>
+				  <%=link_to a.name, user_answer_list_path(@user,a), :class => "list-group-item" %>
+				<%end %>
+			<%else %>
+				Не проходил тестов
+			<%end %>
+		</ul>	
+	</div>
 </div>

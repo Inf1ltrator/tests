@@ -6,9 +6,9 @@
 			  <% @questions.each do |quest| %>
 				      <li class="list-group-item">
 				      	<%= quest.answer1%>
-				        <%= radio_button_tag "answers[answer#{quest.id}]", quest.answer1-%>
+				        <%= radio_button_tag "answers[#{quest.id}]", quest.answer1-%>
 				        <%= quest.answer2%>
-				        <%= radio_button_tag "answers[answer#{quest.id}]", quest.answer2-%>
+				        <%= radio_button_tag "answers[#{quest.id}]", quest.answer2-%>
 				      </li>
 			  <% end %>
 			<li style="list-style:none; margin-top:1em;">

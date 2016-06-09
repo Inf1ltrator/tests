@@ -7,5 +7,5 @@ class User < ActiveRecord::Base
          has_many :lists
          has_many :blanks, :through => :lists
 
-         has_many :answers
+         has_many :answer_lists
 end

@@ -5,7 +5,7 @@ root 'simple_pages#index'
 
   resources :users do
 
-    resources :answers
+    resources :answer_lists, only:[:show]
     
   end
 
